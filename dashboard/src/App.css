@@ -1,0 +1,261 @@
+/* Dashboard Main Styling */
+:root {
+    --bg-color: #1e1e1e;
+    --card-bg: #252525;
+    --card-border: #333;
+    --text-primary: #e8e8e8;
+    --text-secondary: #aaa;
+    --accent-color: #5a67d8;
+    --green: #2ed573;
+    --orange: #ffb142;
+    --red: #ff5252;
+    --header-height: 80px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: rgba(18, 18, 18, 0.9);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    width: 100%;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  
+  .header h1 {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  .refresh-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .refresh-controls select {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .refresh-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .refresh-button:hover {
+    background-color: #4050c0;
+  }
+  
+  .last-updated {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  
+  /* Node Grid Styles */
+  .nodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+    padding: 24px;
+    margin-bottom: auto;
+    flex: 1;
+  }
+  
+  /* Node Card Styles */
+  .node-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .node-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .node-card.offline {
+    opacity: 0.7;
+    border: 1px solid #444;
+  }
+  
+  .node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  
+  .node-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+  }
+  
+  .metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .metric {
+    margin-bottom: 8px;
+  }
+  
+  .metric-name {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  
+  .metric-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  /* Progress Bar Styles */
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+  }
+  
+  .value-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  
+  /* Loading and Error States */
+  .loading, .error-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+  }
+  
+  .error-message {
+    color: var(--red);
+  }
+  
+  .error-message button {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  /* Footer Styles */
+  footer {
+    padding: 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    width: 100%;
+    border-top: 1px solid var(--card-border);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+    }
+    
+    .header-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  
+    .refresh-controls {
+      width: 100%;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+  
+    .nodes-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      padding: 16px;
+      gap: 16px;
+    }
+  }

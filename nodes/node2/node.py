@@ -4,6 +4,11 @@ import json
 import random
 import logging
 from flask import Flask, jsonify
+from flask_cors import CORS
+
+# Initialize Flask app
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Configure logging
 logging.basicConfig(
@@ -11,9 +16,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger('Node2')
-
-# Initialize Flask app
-app = Flask(__name__)
 
 # Configuration
 NODE_ID = os.environ.get("NODE_ID", "db-node-1")
